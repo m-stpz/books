@@ -162,3 +162,55 @@ Table of contents
   - Distributed transactions in practice
   - Fault-tolerant consensus
   - Membership and coordination services
+
+## Part 3. Derived data
+
+### Chapter 10. Batch processing
+
+- Batch processing with unix tools
+  - Simple logs analysis
+  - The unix philosophy
+- MapReduce and Distributed Filesystems
+  - MapReduce Job Execution
+  - Reduce-Side Joins and groupings
+  - Map-side joins
+  - The output of batch workflows
+  - Comparing Hadoop to Distributed dbs
+- Beyond MapReduce
+  - Materialization of intermediate state
+  - Graphs and iterative processing
+  - High-level APIs and languages
+
+### Chapter 11. Stream processing
+
+- Transmitting event streams
+  - Messaging systems
+  - Partitioned logs
+- Dbs and streams
+  - Keeping systems in sync
+  - Change data capture
+  - Event sourcing
+  - State, streams, and immutability
+- Processing streams
+  - Uses of stream processing
+  - Reasoning about time
+  - Stream joins
+  - Fault tolerance
+
+### Chapter 12. The future of data systems
+
+- Data integration
+  - Combining specialized tools by deriving data
+  - Batch and stream processing
+- Unbundling dbs
+  - Composing data storage technologies
+  - Designing applications around dataflow
+  - Observing derived state
+- Aiming for correctness
+  - The end-to-end argument for dbs
+  - Enforcing constraints
+  - Timeliness and integrity
+  - Trust, but verify
+- Doing the right thing
+  - Predictive analytics
+  - Privacy and tracking
