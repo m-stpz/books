@@ -6,6 +6,14 @@ Table of contents
 
 ## Part 1. Foundations of data systems
 
+- The fundamental ideas that underpin the desifgn of data-intensive applications
+- What we want to achieve: reliability, scalability, and maintainability
+  - what they are
+  - how we need to think about them
+  - how we can achieve them
+
+Fundamental ideas that apply to all data systems, whether running on a single machine or distributed across a cluster of machines
+
 ### Chapter 1. Reliable, scalable, and maintainable applications
 
 - Thinking about data systems
@@ -72,6 +80,8 @@ Table of contents
   - Message-passing dataflow
 
 ## Part 2. Distributed data
+
+- Here we move from data stored on one machine to data that is distributed across multiple machines
 
 ### Chapter 5. Replication
 
@@ -164,6 +174,8 @@ Table of contents
   - Membership and coordination services
 
 ## Part 3. Derived data
+
+- Systems that derive some datasets from other datasets
 
 ### Chapter 10. Batch processing
 
