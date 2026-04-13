@@ -26,8 +26,47 @@ Reliability
 
 Scalability
 
-- As the system grows (in data volume, traffice volume, or complexity), there should be reasonable ways of dealing with the growth
+- As the system grows (in data volume, traffic volume, or complexity), there should be reasonable ways of dealing with the growth
 
 Maintainability
 
 - Over time, many different people will work on the system (enginerring and operations, both maintaining current behavior and adapting the system to new use cases), and they should all be able to work on it productively
+
+### Reliability
+
+- Software performs the function the user expected
+- It can tolerate the user making mistakes/using the software in unexpected ways
+- Its performance is good enough for the required use case, under the expected load and data volume
+- System prevents any unauthorized access and abuse
+
+> Continuing to work correctly, even when things go wrong
+
+- Things that can go wrong -> faults
+- Systems that can anticipate and cope with them are called resilient/fault-tolerant
+- It only makes sense to talk about tolerating certain types of faults
+- It's best to design fault-tolerance mechanisms that prevent faults (component) from causing failure (system)
+
+#### Software faults
+
+- Sometimes it happens that bug lie dormant for a long time until they're trigger but some set of circumstances
+- It's revealed that the software is making some kind of assumption about its enviromnent, and while being true most of the time, it stops being true for some reason
+
+#### Human errors
+
+- Design systems in a way that minimize the opportunity for error
+  - well-designed abstractions and APIs
+  - admin interface
+- Meaning, make it easy to do the "right thing" and discourage "the wrong thing"
+- Provide fully feature non-production sandbox environments where people can explore and experiment safely
+  - using real data, without affecting real users
+- Test throughly at all levels
+- Allow quick recovery and roll-back
+- Detailed and clear monitoring [telemetry]
+
+### Scalability
+
+- Just because a system is working well today, it doesn't mean it will continue to do so in the future
+- Common degradation reason is increased load
+- Scalability = term used to describe a system's ability to cope with increased load
+
+#### Describing load
