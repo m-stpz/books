@@ -159,3 +159,12 @@ Throughput = number of records we can process per second
 - When several backend calls are needed to serve a request, it takes just a single slow backend request to slow down the entire end-user request
 
 #### Approaches for coping with load
+
+- How do we maintain good performance even when our load parameters increase by given amount?
+
+> Architecture that is appropriate for one level of load is unlikely to cope with 10x that load. You likely need to rethink architecture on every order of magnitude load increase
+
+- Scaling up: vertical scaling | the machine/node becomes more powerful
+- Scaling out: horizontal scaling | more machines
+  - distributing the load across multiple smaller machines
+- People talk about them in a dycothomic way, almost mutually-exclusive, however, good architectures often involve a pragmatic mixture of them
