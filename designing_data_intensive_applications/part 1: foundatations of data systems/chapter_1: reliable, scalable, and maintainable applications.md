@@ -92,7 +92,7 @@ Main operations:
      - something increase/decrease 10x (10^1)
      - 1
      - 1 order of magnitude = 10
-     - 2 orders of magnitude = 100/\*\*/////sdfoisjahfdisudhfiusdhfiusdhfiusdhfiusdhfiu
+     - 2 orders of magnitude = 100
      - 3 orders of magnitude = 1000
 2. home timeline
    - user view tweets posted by people they follow (300k req/sec)
@@ -148,3 +148,14 @@ Throughput = number of records we can process per second
 
 - SLOs: Service level objectives
 - SLAs: Service level agreements
+
+- It's important to test generating load artificially to test the scalability of a system
+  - load-generating client needs to keep sending requests independently of the response time
+  - if the client waits for previous requests to be completed, it's not a good measurement
+    - since it reduces the queue more than a "normal" condition
+
+> Calculate the response time percentiles on an ongoing basis
+
+- When several backend calls are needed to serve a request, it takes just a single slow backend request to slow down the entire end-user request
+
+#### Approaches for coping with load
