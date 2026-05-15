@@ -33,6 +33,36 @@ If 1 nanosecond is the width of a human hair:
 
 Meaning that 1 ns is equal 1 billion seconds
 
+#### Nanosecond realm | inside the silicon
+
+- CPU L1 cache and RAM live here
+
+- When the CPU is doing math, it moves data across microscopic distances
+- When the CPU has to reach outside itself over writes on the motherboard to grab data from the RAM, it takes around 100ns. To the CPU this is a considerable wait time
+
+#### Millisecond realm | moving parts and networks
+
+- SSD/HDD operations + network live here
+  - SSD: 0.1 - 0.4ms = 100k - 400k ns
+  - HDD: 2 - 10ms = 2 - 10M ns
+    - the mechanical move, in computer terms, takes an eternity
+- The moment data has to be read on a physical disk or sent over the wire to another compute, we cross a massive boundary, the ms boundary
+
+#### The "day in the life of a cpu"
+
+Let's imagine that a CPU is someone sitting besides us and 1 nanosecond is equal to one second
+
+- Execute basic instruction [0.5ns] = 0.5 seconds
+- Fetch data from CPU cache [1n] = 1 second
+- Fetch data from RAM [100ns] = 1.6 minutes
+- Fetch data from an SSD [200k ns/ 0.2ms] = 2.3 days
+- Fetch data from a HHD [5M ns/5ms] = 5.7 days
+- Send an internet packet & get a reply [50M ns/50ms]: 1.5 years
+
+That's why when designing systems, memory management and caching matters so much
+
+- If the application forces the CPU to constantly go all the way to a distant hard drive (ms) or make an external API call over the network instead of pulling data out of RAM, you are asking for an executive who operates in split-seconds to wait years for an answer
+
 ## Latency numbers
 
 - To design fast systems, we need to understand the physical reality of hardware
