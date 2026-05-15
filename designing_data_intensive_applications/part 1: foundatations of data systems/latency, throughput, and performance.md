@@ -31,6 +31,8 @@ If 1 nanosecond is the width of a human hair:
 - 1 millisecond = length of a football field
 - 1 second = 100km
 
+Meaning that 1 ns is equal 1 billion seconds
+
 ## Latency numbers
 
 - To design fast systems, we need to understand the physical reality of hardware
@@ -48,4 +50,56 @@ Data access is bound by physics
 
 > Reading from RAM is 1k-2k times faster than reading from a fast SSD, and about 100k times faster than an old-school HDD. This is why caching layers are so critical for high-performance apps
 
+```
+       / \
+      /   \        CPU Registers / Cache (< 1 - 4 ns)
+     /_____\       ---------------------------------
+    /       \      Main Memory / RAM (~100 ns)
+   /_________\     ---------------------------------
+  /           \    Solid State Drive / SSD (~0.1 - 0.2 ms)
+ /_____________\   ---------------------------------
+/               \  Hard Disk Drive / HDD (~1 - 10 ms)
+```
+
 ### 2. Network & data exchange latency
+
+Once data leaves a single machine and travels through cables, packet transit times and routing overhead take over
+
+- Same data center / region: 1-10ms
+- Cross-region: 50-150ms (bound ny the physical speed of light through glass fibers over thousands of kms)
+
+- Global round tipe (Europe to South America): 250-400ms
+
+```
+                     /\
+                    /  \          CPU Registers / Cache (< 1 - 4 ns)
+                   /____\         --------------------------------------------------
+                  /      \        Main Memory / RAM (~100 ns)
+                 /________\       --------------------------------------------------
+                /          \      Solid State Drive / SSD (~0.1 - 0.2 ms)
+               /____________\     --------------------------------------------------
+              /              \    Hard Disk Drive / HDD (~1 - 10 ms)
+             /________________\   --------------------------------------------------
+            /                  \  Network: Same Data Center / Region (~1 - 10 ms)
+           /____________________\ --------------------------------------------------
+          /                      \ Network: Cross-Region / Global (~50 - 250+ ms)
+         /________________________\
+```
+
+## Optmizations
+
+### To improve latency
+
+- Move data closer to where it's needed
+- Use memory caching (RAM over disk)
+- Optimize indexing
+- Minimize netwrok hops
+- Implement CDNS
+
+### To improve throughput
+
+- Introduce concurrency and parellelism (add lanes to the highway)
+- Scale horizontally
+- Implement load balancing
+- Partition/shard dbs
+- Message queues to handle long-running tasks async
