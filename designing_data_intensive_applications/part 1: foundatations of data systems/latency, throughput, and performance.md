@@ -22,6 +22,25 @@
 
 ### Scale: nanoseconds vs. Milliseconds
 
+- 1 second = 1k ms = 1m microsecond = 1 billion ns
+- 1 ms = 1k microsecond
+- 1 microsecond = 1k ns
+
+```
+1 Second (s)
+      │
+      ▼ (÷ 1,000)
+ 1 Millisecond (ms)    [10^-3 seconds]
+      │
+      ▼ (÷ 1,000)
+ 1 Microsecond (μs)   [10^-6 seconds]
+      │
+      ▼ (÷ 1,000)
+ 1 Nanosecond (ns)     [10^-9 seconds]
+```
+
+Every new scale divides time by 1000
+
 - 1 millisecond (ms) = 1k microseconds = 1M nanoseconds
 
 A ms is one million nanoseconds
@@ -62,6 +81,19 @@ Let's imagine that a CPU is someone sitting besides us and 1 nanosecond is equal
 That's why when designing systems, memory management and caching matters so much
 
 - If the application forces the CPU to constantly go all the way to a distant hard drive (ms) or make an external API call over the network instead of pulling data out of RAM, you are asking for an executive who operates in split-seconds to wait years for an answer
+
+#### Speed of light
+
+In a vaccum, light travels 300k km/s
+
+- 1s = 300km
+- 1ms = 300km
+- 1microsecond = 30 m
+- 1ns = 30 cm
+
+In a network, data travels as light ppulses through fiber-optic cables
+
+- Light is slower in glass than in vaccum (around 200k km/s), so it takes around 5ms for light to travel 1k km + time for routers and switches to process and route the data
 
 ## Latency numbers
 
