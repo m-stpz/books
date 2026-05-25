@@ -4,8 +4,11 @@
   - used in serverless and microservices architecture
 - Examples: Amazon SQS, Kafka, RabbitMQ
   - RabbitMQ: great for complex routing logic and traditional message queuing
+
   - Apache Kafka: designed for high-throughput, log-based streaming (Pub/Sub) where data needs to be replayed/retained
+    - in doubt, pick kafka | most widely used
   - AWS SQS: Fully managed cloud-native queues
+    - if you want simplicity and a hosted solution
 
 ```
 // not a good pipeline
@@ -115,3 +118,6 @@ client -- uploads image -->  - resize ----> database
   - dead letter queue (DLQ): where fail messages go
     - then someone can inspect them later
     - separated from the main queues
+
+- What happens if the queue goes down?
+  - some systems (kafka) save a replica, so we can recover the messages
