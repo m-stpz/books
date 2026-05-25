@@ -24,6 +24,28 @@ client -- uploads image -->  - resize ----> database
 
 - Much better if the server receives the request and only saves a message to a queue
 
+## When to use it?
+
+1. Async work: emails, reports, uploads
+2. Bursty traffic: when spikes need to be absorbed
+3. Decoupling: services that scale independently
+4. Reliability: can't afford to lose work
+
+### When not to do it
+
+- Simple CRUD with low traffic
+- When you need:
+  - faster responses
+  - established latency
+  - predictable request/response workflows
+  - prectictable sequence
+
+### Architectural alternatives
+
+- Do you need ACID compliance, but doesn't want new infra? Use database as a queue
+- Do you need that microservices talk with each other with low-latency and established request/response workflows? Use gRPC
+- Do you need an updated real-time for the client's UI after a long-running process? Use web-socket
+
 ## Core concepts
 
 1. Producer: application/service that creates and sends the message
@@ -66,6 +88,7 @@ client -- uploads image -->  - resize ----> database
 
 2. At-most-once: fire and forget; message may never arrive
 3. Exactly-once
+   - even though it's the best, it's extremely hard to achieve in distributed systems
 
 ## Important considerations
 
@@ -74,3 +97,21 @@ client -- uploads image -->  - resize ----> database
 
 2. Message ordering: the messages might be received out of order.
    - If order is important, we need to choose a queue that guarantees ordering
+
+### Deep dive
+
+- How does your queue handle increased throughput? (incrased load)
+  - partition: like a subqueue
+  - consumer groups
+
+- What happens if your consumers produce more messages than your consumers can process them? (unbalance of producers and consumers)
+  - auto scaling
+  - increase consumers as the message queue increases
+  - add monitoring, so you know if a queue is growing too large
+
+- What happens if a message fails to process? (poisoned message)
+  - a message that crashes the consumer everytime it tries to process it
+  - max retry account
+  - dead letter queue (DLQ): where fail messages go
+    - then someone can inspect them later
+    - separated from the main queues
