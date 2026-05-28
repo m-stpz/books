@@ -3,8 +3,14 @@
 - Scalability
   - System capacity to handle a bigger load without losing performance
   - Latency / Performance
-- Security
+
 - Reliability
   - Handle/recover from failure
-  - Avoid
-- Availability
+  - Avoid single point of failure
+  - Error handling
+  - Fault tolerance
+  - Redundance
+  - Availability/Uptime
+
+- Maintainability
+- Security
