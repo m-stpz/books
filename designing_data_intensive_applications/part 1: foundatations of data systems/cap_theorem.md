@@ -5,6 +5,13 @@
   - Partition tolerance is a must. We must be able to deal with network failures. So the question is:
     - consistency or availability?
 
+- When considering that network fails (partition tolerance), what's more important: consistency or availability?
+  - in distributed systems, we need to have partition tolerance
+  - is consistency or availability?
+    - does it need strong consistency or high availability?
+    - do I need strong read-after-write consistency?
+    - does every single read of my system need to have the latest write?
+
 ## When to choose consistency
 
 - Systems that need:
